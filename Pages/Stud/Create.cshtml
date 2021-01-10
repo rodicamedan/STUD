@@ -1,0 +1,88 @@
+﻿@page
+@model Studenti.Pages.Stud.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Student.Nume" class="control-label"></label>
+                <input asp-for="Student.Nume" class="form-control" />
+                <span asp-validation-for="Student.Nume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Prenume" class="control-label"></label>
+                <input asp-for="Student.Prenume" class="form-control" />
+                <span asp-validation-for="Student.Prenume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.CNP" class="control-label"></label>
+                <input asp-for="Student.CNP" class="form-control" />
+                <span asp-validation-for="Student.CNP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Email" class="control-label"></label>
+                <input asp-for="Student.Email" class="form-control" />
+                <span asp-validation-for="Student.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.NrTelefon" class="control-label"></label>
+                <input asp-for="Student.NrTelefon" class="form-control" />
+                <span asp-validation-for="Student.NrTelefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.DataInscriere" class="control-label"></label>
+                <input asp-for="Student.DataInscriere" class="form-control" />
+                <span asp-validation-for="Student.DataInscriere" class="textdanger"></span>
+            </div>
+            <label asp-for="Student.IDFacultate" class="control-label">Facultate</label>
+            <select asp-for="Student.IDFacultate" class="form-control" asp-items="ViewBag.IDFacultate">
+            </select>
+            <span asp-validation-for="Student.IDFacultate" class="text-danger"></span>
+            <div class="form-group">
+                <div class="table">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+                                foreach (var cat in Model.AssignedCategoryDataList)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedCourses"
+                                               value="@cat.IDSpecializare"
+                                               @(Html.Raw(cat.Atribuire ? "checked=\"checked\"" : "")) />
+                                        @cat.IDSpecializare @: @cat.Specializare
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
