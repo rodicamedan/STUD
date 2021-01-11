@@ -35,7 +35,7 @@ namespace Studenti.Models
             }
             var selectedCategoriesHS = new HashSet<string>(selectedCategories);
             var bookCategories = new HashSet<int>
-            (bookToUpdate.SpecializareStudenti.Select(c => c.Specializare.ID));
+            (bookToUpdate.SpecializareStudenti.Select(c => c.IDSpecializare));
             foreach (var cat in context.Specializare)
             {
                 if (selectedCategoriesHS.Contains(cat.ID.ToString()))

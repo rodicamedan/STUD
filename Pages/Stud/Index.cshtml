@@ -71,7 +71,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Facultate.NumeFacultate)
             </td>
-           
+            <td>
+                @{
+                    foreach (var category in item.SpecializareStudenti)
+                    {
+                                <br />
+                        //@category.Specializare.ID <br />
+                       // @: @category.Specializare.Denumire
+                    }
+                }
+            </td>
+
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

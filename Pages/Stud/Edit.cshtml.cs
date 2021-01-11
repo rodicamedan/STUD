@@ -65,7 +65,8 @@ selectedCategories)
             bookToUpdate,
             "Student",
             i => i.Nume, i => i.Prenume,
-            i => i.CNP, i => i.DataInscriere, i => i.IDFacultate))
+            i => i.CNP, i => i.Email, i => i.NrTelefon,
+            i => i.DataInscriere, i => i.Facultate, i => i.SpecializareStudenti))
             {
                 UpdateBookCategories(_context, selectedCategories, bookToUpdate);
                 await _context.SaveChangesAsync();

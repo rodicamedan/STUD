@@ -51,8 +51,9 @@ namespace Studenti.Pages.Stud
             if (await TryUpdateModelAsync<Student>(
             newStud,
             "Student",
-            i => i.Nume, i => i.Prenume,
-            i => i.CNP, i => i.DataInscriere, i => i.IDFacultate))
+          i => i.Nume, i => i.Prenume,
+            i => i.CNP, i => i.Email, i => i.NrTelefon,
+            i => i.DataInscriere, i => i.Facultate, i => i.SpecializareStudenti))
             {
                 _context.Student.Add(newStud);
                 await _context.SaveChangesAsync();
